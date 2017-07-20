@@ -340,7 +340,12 @@ you should place your code here."
   (setq-default evil-escape-key-sequence "jk")
   (setq-default evil-esc-delay 0.2)
 
-  (setq ycmd-server-command '("python3" "/home/yuweiwang/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd"))
+  (setq ycmd-server-command
+        (list "python3"
+              (file-truename
+               "~/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd")
+              )
+        )
   (setq ycmd-force-semantic-completion t)
   (add-hook 'c++-mode-hook 'ycmd-mode)
 
