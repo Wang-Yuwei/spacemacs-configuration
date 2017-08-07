@@ -282,7 +282,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -374,7 +374,6 @@ you should place your code here."
       (setq alpha-list (cdr (append alpha-list (list h))))
       )
     )
-  (global-linum-mode)
   (add-hook 'prog-mode-hook #'fci-mode)
   (setq mmm-submode-decoration-level 0)
   (add-hook 'python-mode-hook 'python-docstring-mode)
@@ -388,7 +387,6 @@ you should place your code here."
                  nil))
 
   (add-hook 'nxml-mode-hook 'hs-minor-mode)
-  (add-hook 'nxml-mode-hook 'linum-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
