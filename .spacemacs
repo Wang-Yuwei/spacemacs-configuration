@@ -339,7 +339,6 @@ you should place your code here."
   ;; also avoid any '<mouse-1> is undefined' when setting to 'undefined
   (define-key evil-motion-state-map [mouse-1] 'silence)
   (setq-default evil-escape-key-sequence "jk")
-  (setq-default evil-esc-delay 0.2)
 
   (setq ycmd-server-command
         (list "python3"
