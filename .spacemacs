@@ -117,7 +117,7 @@ values."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'vim
+   dotspacemacs-editing-style 'hybrid
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -172,7 +172,7 @@ values."
    dotspacemacs-emacs-leader-key "M-m"
    ;; Major mode leader key is a shortcut key which is the equivalent of
    ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
-   dotspacemacs-major-mode-leader-key ","
+   dotspacemacs-major-mode-leader-key nil
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
    ;; (default "C-M-m")
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
@@ -374,10 +374,21 @@ you should place your code here."
       (setq alpha-list (cdr (append alpha-list (list h))))
       )
     )
-  (add-hook 'prog-mode-hook #'linum-mode)
+  (global-linum-mode)
   (add-hook 'prog-mode-hook #'fci-mode)
   (setq mmm-submode-decoration-level 0)
   (add-hook 'python-mode-hook 'python-docstring-mode)
+  (add-to-list 'hs-special-modes-alist
+               '(nxml-mode
+                 "<!--\\|<[^/>]*[^/]>"
+                 "-->\\|</[^/>]*[^/]>"
+
+                 "<!--"
+                 sgml-skip-tag-forward
+                 nil))
+
+  (add-hook 'nxml-mode-hook 'hs-minor-mode)
+  (add-hook 'nxml-mode-hook 'linum-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
